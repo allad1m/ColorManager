@@ -1,0 +1,17 @@
+﻿<Application x:Class="ColorManager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ColorManager"
+             StartupUri="Data/Views/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Data/Dictionaries/BordersDictionary.xaml"/>
+                <ResourceDictionary Source="Data/Dictionaries/ButtonDictionary.xaml"/>
+                <ResourceDictionary Source="Data/Dictionaries/TextBoxDictionary.xaml"/>
+                <ResourceDictionary Source="Data/Dictionaries/ComboBoxDictionary.xaml"/>
+                <ResourceDictionary Source="Data/Dictionaries/ListBoxDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

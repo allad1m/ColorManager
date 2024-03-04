@@ -1,0 +1,97 @@
+﻿<Page x:Class="ColorManager.Data.Views.Authorization.ConfirmationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:local="clr-namespace:ColorManager.Data.Views.Authorization" 
+      xmlns:vm="clr-namespace:ColorManager.Data.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ConfirmationPage" x:Name="ThisWindow">
+
+    <Page.DataContext>
+        <vm:AuthorizateViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Label Grid.Row="0" Grid.Column="1" Content="Добро пожаловать"
+               FontSize="24" Foreground="Black" FontWeight="Medium"
+               VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+
+
+        <Border Grid.Row="1" Grid.Column="1" Style="{DynamicResource TemplateBorderBase}">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <Label Grid.Row="0" Content="Подтверждение почты"
+                       FontSize="18" Foreground="Black" FontWeight="Medium"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="На указанную почту был отправлен одноразовый код для подтверждения действия. Введите код:"
+                           FontSize="14" Foreground="Black" TextWrapping="Wrap" TextAlignment="Center"
+                           VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30,0"/>
+
+                    <TextBox Grid.Row="1" Text="{Binding Code_TextBox, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="14" Foreground="Black" Height="35"
+                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                             VerticalAlignment="Center" Margin="50,0,50,0"
+                             Template="{DynamicResource TextBoxTemplateBase}">
+                        <TextBox.Effect>
+                            <DropShadowEffect Color="Black" Direction="270" BlurRadius="3" ShadowDepth="2" Opacity="0.2"/>
+                        </TextBox.Effect>
+                    </TextBox>
+
+                </Grid>
+
+                <Grid Grid.Row="3">
+
+                    <Button Height="60" Width="60" Margin="0,0,0,-30"
+                            Command="{Binding ConfirmAction}"
+                            CommandParameter="{Binding ElementName=ThisWindow}"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Center" 
+                            Style="{DynamicResource TemplateBlackToRedRounded}"/>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+
+        <Button Grid.Row="1" Grid.Column="0" Width="50" Height="50"
+                HorizontalAlignment="Right" Margin="0,0,50,0"
+                Command="{Binding GoBackPage}"
+                CommandParameter="{Binding ElementName=ThisWindow}"
+                Template="{DynamicResource TemplateNavigationButton}">
+            <Image Source="/Data/Images/back.ico" Width="30"/>
+        </Button>
+
+
+    </Grid>
+
+</Page>
